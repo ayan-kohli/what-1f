@@ -8,10 +8,10 @@ fastf1.Cache.enable_cache('cache')
 
 fastf1.plotting.setup_mpl(mpl_timedelta_support=True, color_scheme="fastf1")
 
-race = fastf1.get_session(2023, "Monza", "R")
+race = fastf1.get_session(2018, "Monza", "R")
 race.load()
 
-laps = race.laps.pick_drivers("VER").reset_index()
+laps = race.laps.pick_drivers("GAS").reset_index()
 laps["LapTimeSeconds"] = laps["LapTime"].dt.total_seconds()
 laps["StintStartLap"] = laps.groupby("Stint")["LapNumber"].transform("min")
 laps['TireAge'] = laps['LapNumber'] - laps['StintStartLap']
